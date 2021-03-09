@@ -2,7 +2,8 @@ import socket
 
 sock = socket.socket()
 sock.connect(('localhost', 9999))
-sock.send("Hello World!".encode())
+mes = input("Write a message ")
+sock.send(mes.encode())
 
 data = sock.recv(1024)
 sock.close()
