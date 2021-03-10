@@ -1,12 +1,13 @@
 import socket
 
 sock = socket.socket()
-sock.connect(('localhost', 9999))
-mes = input("Write a message ")
-sock.send(mes.encode())
+sock.connect(('localhost', 9090))
 
-data = sock.recv(1024)
-sock.close()
-
-print(data.decode())
-
+while True:
+    message = input()
+    sock.send(message.encode())
+    data = sock.recv(1024)
+    print(data.decode())
+    if message == 'exit':
+        sock.close()
+        break
